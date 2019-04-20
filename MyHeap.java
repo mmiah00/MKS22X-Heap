@@ -6,7 +6,7 @@ public class MyHeap {
       left = data[index * 2 + 1];
       right = data[index * 2 + 2];
 
-      if (data[index] > left){
+      if (data[index] < left && left >= right){
         int temp = data[index];
         data[index] = left;
         data[index * 2 + 1] = temp;
