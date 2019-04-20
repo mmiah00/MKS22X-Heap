@@ -21,19 +21,25 @@ public class MyHeap {
     }
 
   }
-  /*
-       - size  is the number of elements in the data array.
-       - push the element at index i downward into the correct position.
-         This will swap with the larger of the child nodes provided that
-         child is larger. This stops when a leaf is reached, or neither
-         child is larger. [ should be O(logn) ]
-       - precondition: index is between 0 and size-1 inclusive
-       - precondition: size is between 0 and data.length-1 inclusive.
-  */
 
-  private static void pushUp(int[]data,int index){}
+  private static void pushUp(int[]data,int index){
+    while ( (index - 1) /2 >= 0) {
+      int parent = data[ (index - 1) / 2];
+      if (data[index] > parent) {
+        int temp = data[index];
+        data[index] = parent;
+        data[ (index - 1)/ 2] = temp;
+        index = (index - 1)/2;
+      }
+      else {
+        index = -1; 
+      }
+    }
+  }
   /*
-       - push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
+       - push the element at index i up into the correct position.
+         This will swap it with the parent node until the parent node
+         is larger or the root is reached. [ should be O(logn) ]
        - precondition: index is between 0 and data.length-1 inclusive.
   */
 
