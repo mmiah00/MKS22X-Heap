@@ -1,12 +1,28 @@
 public class MyHeap {
   //We discussed these 2 methods already:
   private static void pushDown(int[]data,int size,int index){
-    /*
     while (index * 2 + 2 < size) {
       int left, right;
       left = data[index * 2 + 1];
       right = data[index * 2 + 2];
-
+      if (data[index] >= right && data[index] >= left) {
+        index = size;
+      }
+      else {
+        if (data[index] < left && left > right) {
+          int temp = data[index];
+          data[index] = left;
+          data[index * 2 + 1] = temp;
+          index = index * 2 + 1;
+        }
+        else {
+          int temp = data[index];
+          data[index] = right;
+          data[index * 2 + 2] = temp;
+          index = index * 2 + 2;
+        }
+      }
+      /*
       if (data[index] < left && data[index] < right) {
         if (data[index] < left && left >= right){
           int temp = data[index];
@@ -24,10 +40,10 @@ public class MyHeap {
       else {
         index = size;
       }
+      */
     }
-    //print (data);
-    */
-    
+    print (data);
+
   }
 
   private static void pushUp(int[]data,int index){
@@ -45,14 +61,9 @@ public class MyHeap {
     }
   }
 
-  //We will discuss this today:
   public static void heapify(int[] data){
-    for (int i = 0; i < data.length; i ++){
+    for (int i = data.length - 1; i >= 0; i --){
       pushDown (data, data.length, i);
-    }
-
-    for (int i = data.length; i >= 0; i --) {
-      pushUp (data,i);
     }
   }
 
@@ -60,6 +71,7 @@ public class MyHeap {
     for (int num : data) {
       System.out.print (num + " ");
     }
+    System.out.println ();
   }
   /*
       - convert the array into a valid heap. [ should be O(n) ]
