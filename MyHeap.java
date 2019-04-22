@@ -76,32 +76,33 @@ public class MyHeap {
     }
     System.out.println ();
   }
-  /*
-      - convert the array into a valid heap. [ should be O(n) ]
-  */
 
-  public static void heapsort(int[] data){}
-  /*
-      - sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
-  */
+  public static void heapsort(int[] data){
+    heapify (data);
+    int size = data.length;
+    for (int x = data.length -1; x >= 0; x --) {
+      int end = data[x];
+      int beginning = data[0];
+      data[x] = beginning;
+      data[0] = end;
+      size -= 1;
+      pushDown (data, size, 0);
+    }
+  }
 
   public static void main (String[] args) {
     int[] a = {15,87,24,12,42,18,19,37,48,98,26,1};
     int[] b = {19,100,136,17,20,25,1,2,7,3,200};
     int[] c = {1,26,2,6,12,7,3,57,33,90};
     int[] d = {213,2,5,1,35,12,5,0,1000,23,12};
-    pushUp (d, 4);
-    print (d);
-    /*
-    heapify (a);
+    heapsort (a);
+    heapsort (b);
+    heapsort (c);
+    heapsort (d);
     print (a);
-    heapify (b);
     print (b);
-    heapify (c);
     print (c);
-    heapify (d);
-    print (d);
-    */
+    print (d); 
   }
 }
 
