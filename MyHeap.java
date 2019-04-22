@@ -90,14 +90,17 @@ public class MyHeap {
     int[] b = {19,100,136,17,20,25,1,2,7,3,200};
     int[] c = {1,26,2,6,12,7,3,57,33,90};
     int[] d = {213,2,5,1,35,12,5,0,1000,23,12};
-    heapify (d);
+    pushUp (d, 4);
     print (d);
-
     /*
     heapify (a);
     print (a);
     heapify (b);
     print (b);
+    heapify (c);
+    print (c);
+    heapify (d);
+    print (d);
     */
   }
 }
